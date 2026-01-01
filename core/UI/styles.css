@@ -7,7 +7,7 @@ body {
   align-items: center;
 }
 
-#hud {
+#HUD {
   margin: 12px;
   display: flex;
   gap: 12px;

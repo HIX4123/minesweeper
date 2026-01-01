@@ -15,10 +15,7 @@ export default class Board {
   }
 
   static #createEmptyBoard(width, height) {
-    return new Array.from(
-      { length: height },
-      () => new Array.from({ length: width }, () => new Cell()),
-    );
+    return Array.from({ length: height }, () => Array.from({ length: width }, () => new Cell()));
   }
 
   static #placeMines(cells, width, height, mineCount) {

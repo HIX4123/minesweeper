@@ -1,5 +1,7 @@
 import Board from '../engine/js/Board.js';
 
+alert(`script.js loaded`);
+
 const WIDTH = 16;
 const HEIGHT = 16;
 const MINES = 20;
@@ -8,7 +10,7 @@ let board;
 
 const boardElement = document.getElementById('board');
 const statusElement = document.getElementById('status');
-const resetButton = document.getElementById('resetButton');
+const resetButton = document.getElementById('reset');
 
 init();
 
