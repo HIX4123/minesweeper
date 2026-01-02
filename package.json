@@ -4,7 +4,9 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-unused-imports": "^4.3.0"
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "prettier": "^3.7.4",
+    "stylelint-config-standard": "^39.0.1"
   },
   "name": "minesweeper",
   "version": "1.0.0",
@@ -190,7 +192,9 @@
     "yocto-queue": "^0.1.0"
   },
   "scripts": {
-    "build": "npx esbuild core/UI/script.js --bundle --format=iife --outfile=dist/bundle.js"
+    "build": "npx esbuild src/ui/script.js --bundle --format=iife --outfile=dist/bundle.js",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint:css:fix": "stylelint \"**/*.css\" --fix"
   },
   "repository": {
     "type": "git",

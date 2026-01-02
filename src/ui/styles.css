@@ -7,10 +7,38 @@ body {
   align-items: center;
 }
 
-#HUD {
+#hud {
   margin: 12px;
   display: flex;
   gap: 12px;
+}
+
+#settings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  min-width: 280px;
+}
+
+.setting {
+  display: grid;
+  grid-template-columns: 72px 1fr 48px;
+  align-items: center;
+  gap: 12px;
+}
+
+.setting-label {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.setting-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 #board {

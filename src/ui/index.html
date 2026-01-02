@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -7,9 +7,27 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div id="HUD">
+    <div id="hud">
       <span id="status">IN_PROGRESS</span>
       <button id="reset">Reset</button>
+    </div>
+
+    <div id="settings" aria-label="Board settings">
+      <label class="setting">
+        <span class="setting-label">Width</span>
+        <input id="width-range" type="range" min="4" max="50" value="16" />
+        <span id="width-value" class="setting-value">16</span>
+      </label>
+      <label class="setting">
+        <span class="setting-label">Height</span>
+        <input id="height-range" type="range" min="4" max="50" value="16" />
+        <span id="height-value" class="setting-value">16</span>
+      </label>
+      <label class="setting">
+        <span class="setting-label">Mines</span>
+        <input id="mines-range" type="range" min="1" max="256" value="20" />
+        <span id="mines-value" class="setting-value">20</span>
+      </label>
     </div>
 
     <div id="board" aria-label="Minesweeper board"></div>

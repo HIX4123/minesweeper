@@ -1,25 +1,31 @@
 import Board from '../engine/js/Board.js';
 
-const WIDTH = 16;
-const HEIGHT = 16;
-const MINES = 20;
-
 let board;
 
 const boardElement = document.getElementById('board');
 const statusElement = document.getElementById('status');
 const resetButton = document.getElementById('reset');
+const widthRange = document.getElementById('width-range');
+const heightRange = document.getElementById('height-range');
+const minesRange = document.getElementById('mines-range');
+const widthValue = document.getElementById('width-value');
+const heightValue = document.getElementById('height-value');
+const minesValue = document.getElementById('mines-value');
 
 init();
 
 function init() {
-  board = new Board(WIDTH, HEIGHT, MINES);
+  const width = Number(widthRange.value);
+  const height = Number(heightRange.value);
+  const mines = Math.min(Number(minesRange.value), width * height);
 
-  boardElement.style.gridTemplateColumns = `repeat(${WIDTH}, 32px)`;
+  board = new Board(width, height, mines);
+
+  boardElement.style.gridTemplateColumns = `repeat(${width}, 32px)`;
   boardElement.innerHTML = '';
 
-  for (let y = 0; y < HEIGHT; y++) {
-    for (let x = 0; x < WIDTH; x++) {
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
       const cellElement = document.createElement('div');
       cellElement.classList.add('cell');
       cellElement.dataset.x = x;
@@ -29,6 +35,24 @@ function init() {
   }
 
   render();
+}
+
+function syncMinesMax() {
+  const width = Number(widthRange.value);
+  const height = Number(heightRange.value);
+  const maxMines = width * height;
+
+  minesRange.max = String(maxMines);
+  if (Number(minesRange.value) > maxMines) {
+    minesRange.value = String(maxMines);
+  }
+  minesValue.textContent = minesRange.value;
+}
+
+function updateSettingValue() {
+  widthValue.textContent = widthRange.value;
+  heightValue.textContent = heightRange.value;
+  minesValue.textContent = minesRange.value;
 }
 
 boardElement.addEventListener('click', (event) => {
@@ -59,6 +83,20 @@ resetButton.addEventListener('click', () => {
   init();
 });
 
+widthRange.addEventListener('input', () => {
+  updateSettingValue();
+  syncMinesMax();
+});
+
+heightRange.addEventListener('input', () => {
+  updateSettingValue();
+  syncMinesMax();
+});
+
+minesRange.addEventListener('input', () => {
+  updateSettingValue();
+});
+
 function render() {
   const cells = boardElement.children;
 
@@ -86,4 +124,10 @@ function render() {
   }
 
   statusElement.textContent = board.getState();
+  if (board.getState() !== 'IN_PROGRESS') {
+    alert(`You ${board.getState() === 'WON' ? 'won' : 'lost'}!`);
+  }
 }
+
+updateSettingValue();
+syncMinesMax();
