@@ -71,6 +71,7 @@ export default class Board {
 
     if (cell.isMine) {
       this.state = 'LOST';
+      this.openAllMines();
       return;
     }
 
@@ -118,6 +119,15 @@ export default class Board {
         const neighbor = this.cells[ny][nx];
         if (neighbor.isOpen || neighbor.isFlagged) continue;
         queue.push([nx, ny]);
+      }
+    }
+  }
+
+  openAllMines() {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        const cell = this.cells[y][x];
+        cell.isOpen = true;
       }
     }
   }

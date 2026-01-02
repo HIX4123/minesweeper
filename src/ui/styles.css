@@ -35,8 +35,8 @@ body {
   cursor: default;
 }
 
-.cell.flag {
-  color: orange;
+.cell.flagged {
+  background: orange;
 }
 
 .cell.mine {

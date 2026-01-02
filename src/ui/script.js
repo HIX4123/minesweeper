@@ -1,7 +1,5 @@
 import Board from '../engine/js/Board.js';
 
-alert(`script.js loaded`);
-
 const WIDTH = 16;
 const HEIGHT = 16;
 const MINES = 20;
